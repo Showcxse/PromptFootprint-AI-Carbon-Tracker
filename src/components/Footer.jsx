@@ -4,27 +4,27 @@ const footer = () => {
   return (
     <>
     <footer className='footerWrapper relative bg-linear-to-t from-primary-white to-primary-off-white backdrop-blur-md border-t border-primary-dark text-md text-gray-700 dark:text-slate-200 text-center overflow-hidden'>
-      <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-primary-green/20 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-[20%] left-[-5%] w-100 h-100 bg-emerald-400/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-primary-green/20 dark:opacity-50 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-[20%] left-[-5%] w-100 h-100 bg-emerald-400/10 dark:opacity-50 rounded-full blur-[100px] pointer-events-none"></div>
       <div className="max-w-6xl mx-auto flex justify-between items-center sm:flex-row gap-4 flex-wrap p-6">
         
         <div className='items-center gap-2 px-3 py-1 text-left flex-1'>
           <div>
-            <h3 className='text-2xl mb-2 uppercase leading-tight tracking-tigher'>PROJECT <span className='text-transparent bg-clip-text bg-linear-to-r from-primary-green to bg-emerald-700'>NAME</span> </h3>
-            <p>Write some corny shit here about the purpose of the project</p>
+            <h3 className='text-2xl mb-2 leading-tight tracking-tigher'>Prompt<span className='text-transparent bg-clip-text bg-linear-to-r from-primary-green to bg-emerald-700'>Footprint</span> </h3>
+            <p>See the carbon cost before you send</p>
           </div>
         </div>
         {/*REMEMBER TO GO BACK AND MAKE SURE THESE HOES ACTUALLY WORK */}
         <div className='gap-8 items-center flex-col'>
             <ul>
               <li className='mb-4 text-left text-md hover:text-primary-green transition-colors duration-300'>
-                <a href="">Home</a>
+                <a href="#home">Home</a>
               </li>
               <li className='mb-4 text-left text-md hover:text-primary-green transition-colors duration-300'>
-              <a href="">Prompt Analyzer</a>
+              <a href="#analyzer">Prompt Analyzer</a>
               </li>
               <li className='mb-4 text-left text-md hover:text-primary-green transition-colors duration-300'>
-                <a href="">About</a>
+                <a href="#about">About</a>
               </li>
             </ul>
         </div>

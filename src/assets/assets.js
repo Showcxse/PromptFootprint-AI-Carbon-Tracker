@@ -6,6 +6,7 @@ import openaidark from './openai_dark.svg';
 import grokdark from './grok_dark.svg';
 import llammadark from './llamaindex.svg';
 import githubicon from './github-line.svg';
+import errorimage from './error.png'
 
 export const assets = {
   ailazyart,
@@ -15,5 +16,6 @@ export const assets = {
   openaidark,
   grokdark,
   llammadark,
-  githubicon
+  githubicon,
+  errorimage,
 }

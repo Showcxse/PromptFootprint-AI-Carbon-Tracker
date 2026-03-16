@@ -13,6 +13,10 @@
   --font-primary: 'Oxygen', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .dark {
   --color-primary-white: #262824;
   --color-primary-off-white: #2B2926;

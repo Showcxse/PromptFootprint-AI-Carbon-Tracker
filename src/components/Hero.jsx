@@ -27,9 +27,9 @@ const Hero = () => {
     <>
       <header className="relative heroWrapper bg-linear-to-b from-primary-white to bg-primary-off-white overflow-hidden min-h-[70vh] flex flex-col justify-between">
         {/*GRADIENT BACKGROUND PRIME*/}
-        <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-primary-green/20 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-green/10 rounded-full blur-[75px] pointer-events-none"></div>
-        <div className="absolute bottom-[20%] left-[-5%] w-100 h-100 bg-emerald-400/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-primary-green/20 dark:opacity-50 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-green/10 dark:opacity-50 rounded-full blur-[75px] pointer-events-none"></div>
+        <div className="absolute bottom-[20%] left-[-5%] w-100 h-100 bg-emerald-400/10 dark:opacity-50 rounded-full blur-[100px] pointer-events-none"></div>
 
         {/*TOP SECTION*/}
         <div className="max-w-4xl mx-auto flex flex-col items-center justify-center py-20 px-4">
@@ -38,9 +38,9 @@ const Hero = () => {
             🌱 GREEN AI IN 2026: Real-Time Emissions Tracking
           </div>
           <h1 className="text-6xl md:text-8xl font-bold text-primary-dark text-center leading-tight tracking-tighter">
-            LOREM{" "}
+            Prompt
             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary-green to-emerald-700">
-              IPSUM
+              Footprint
             </span>{" "}
           </h1>
           <div className="mt-8 max-w-lg text-lg md:text-2xl text-gray-500 dark:text-slate-300 text-center font-medium leading-relaxed">

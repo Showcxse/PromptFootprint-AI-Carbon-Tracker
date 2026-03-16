@@ -18,7 +18,7 @@ const About = () => {
 
   return (
     <>
-    <section className='aboutWrapper relative bg-primary-off-white pb-20 px-6'>
+    <section id='about' className='aboutWrapper relative bg-primary-off-white pb-20 px-6'>
         {/* GREEN BLOBS IN THE BACKGROUND */}
         <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-primary-green/20 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-[20%] left-[-5%] w-100 h-100 bg-emerald-400/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -27,7 +27,7 @@ const About = () => {
         <div className="max-w-6xl mx-auto">
             {/* HEADER */}
             <div className="mb-12">
-                <h2 className="text-4xl font-bold text-primary-dark mb-2">About <span className='text-primary-green'>PROJECTNAME</span></h2>
+                <h2 className="text-4xl font-bold text-primary-dark mb-2">About <span className='text-primary-green'>PromptFootprint</span></h2>
                 <div className="w-16 h-1 bg-primary-green rounded-full"></div>
             </div>
             {/* GRID */}
@@ -44,7 +44,7 @@ const About = () => {
                 <AboutGridCard title="Accuracy" icon={Target}>
                     <p>These values are estimates for informational purposes and may not be perfectly accurate due to the complexity of AI infrastructure and regional variations in grid intensity.</p>
                 </AboutGridCard>
-                <div className="md:col-span-2 bg-linear-to-br from-primary-green to-emerald-600 text-primary-white p-8 rounded-3xl shadow-xl overflow-hidden group backdrop-blur-md border border-primary-white/70 hover:border-primary-white transition-all flex items-center justify-between">
+                <div className="md:col-span-2 bg-linear-to-br from-primary-green to-emerald-600 text-primary-white p-8 rounded-3xl shadow-xl overflow-hidden group backdrop-blur-md border border-primary-white/70 hover:border-primary-white dark:hover:border-primary-dark transition-all flex items-center justify-between">
                     <div className='max-w-[60%]'>
                         <h3 className="text-xl font-bold text-primary-white dark:text-primary-dark mb-2">Sustainable AI</h3>
                         <div className="w-16 h-1 bg-primary-white dark:bg-primary-dark rounded-full mb-2"></div>

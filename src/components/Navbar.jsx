@@ -7,15 +7,21 @@ const navbar = () => {
 
   return (
     <>
-      <nav className="relative flex p-4 items-center justify-center font-medium text-gray-700 dark:text-slate-200 bg-linear-to-t from-primary-white to-primary-off-white overflow-hidden">
-        <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-primary-green/20 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="absolute bottom-[20%] left-[-5%] w-100 h-100 bg-emerald-400/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <nav id="home" className="relative flex p-4 items-center justify-center font-medium text-gray-700 dark:text-slate-200 bg-linear-to-t from-primary-white to-primary-off-white overflow-hidden">
+        <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-primary-green/20 dark:opacity-50 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-[20%] left-[-5%] w-100 h-100 bg-emerald-400/10 dark:opacity-50 rounded-full blur-[100px] pointer-events-none"></div>
         <ul className="flex gap-8 text-sm items-center">
           <li className="hover:text-primary-green transition-colors duration-300 cursor-pointer">
+            <a href="#about">
             ABOUT
+
+            </a>
           </li>
           <li className="hover:text-primary-green transition-colors duration-300 cursor-pointer">
-            PROMPTS
+            <a href="#analyzer">
+            PROMPT ANALYZER
+
+            </a>
           </li>
           {/*IMPLEMENT THIS LATER FUTURE
         
