@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Leaf, Cpu, Globe, Zap, Trees} from "lucide-react";
 import Dropdown from "./Dropdown.jsx";
 import { encodingForModel } from "js-tiktoken";
 import { MODEL_CONFIG } from "../utils/modelData.js";
+import { doc, updateDoc, increment, onSnapshot} from "firebase/firestore";
+import { db } from "../firebase.js";
 
 const Dashboard = () => {
 
@@ -27,30 +29,47 @@ const Dashboard = () => {
     try {
       const enc = encodingForModel("gpt-4o");
       const tokens = enc.encode(prompt).length;
-
       const activeModel = MODEL_CONFIG[chosenModel];
 
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      let currentGridIntensity;
 
-      const currentIntensity = activeModel.fallbackIntensity ? activeModel.fallbackIntensity: 412; //412 IS A PLACEHOLDER !!
-      //FALLBACK INTENSITY ONLY NEEDED FOR DEEPSEEK BECAUSE CHINA IS WEIRD
-      //FAKE API RESPONSE
-      //WILL BE REPLACED WITH REAL ONE LATER
+      if (activeModel.fallbackIntensity) {
+        currentGridIntensity = activeModel.fallbackIntensity;
+      } else {
+        const response = await fetch(
+          `https://api.electricitymap.org/v3/carbon-intensity/latest?zone=${activeModel.likelyZone}`,
+          {
+            headers: {
+              "auth-token": import.meta.env.VITE_ELECTRICITY_MAPS_API_KEY,
+            },
+          }
+        );
 
-      const fakeApiResponse = {
-        zone: activeModel.likelyZone,
-        carbonIntensity: currentIntensity,
-      };
+        if (!response.ok) throw new Error("Sum not okay");
+
+        const data = await response.json();
+        currentGridIntensity = data.carbonIntensity;
+      }
+
 
       const totalKwh = tokens * activeModel.energyPerToken;
-      const totalEmissions = totalKwh * fakeApiResponse.carbonIntensity;
+      const totalEmissions = totalKwh * currentGridIntensity;
 
       const equivalentMiles = (totalEmissions / 400).toFixed(6);
 
       setEmissionResult(totalEmissions.toFixed(4));
-      setGridIntensity(fakeApiResponse.carbonIntensity);
+      setGridIntensity(currentGridIntensity);
       setRegionName(activeModel.likelyZone);
       setMilesDriven(equivalentMiles);
+
+      const globalStatsRef = doc(db, "stats", "global");
+
+      await updateDoc(globalStatsRef, {
+        totalTokens: increment(tokens),
+        totalEmissions: increment(Number(totalEmissions)),
+        totalMilesDriven: increment(Number(equivalentMiles)),
+        totalCalculations: increment(1)
+      })
     
     } catch (error) {
       console.error("Here's why it didn't work:", error);
@@ -59,6 +78,22 @@ const Dashboard = () => {
     }
 
   }
+
+  const [globalStats, setGlobalStats] = useState({tokens: 0, emissions: 0, miles: 0});
+
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, "stats", "global"), (doc) => {
+      if (doc.exists()) {
+        const data = doc.data();
+        setGlobalStats({
+          tokens: data.totalTokens,
+          emissions: data.totalEmissions,
+          miles: data.totalMilesDriven,
+        });
+      }
+    });
+    return () => unsub();
+  }, []);
 
   return (
     <>
@@ -81,7 +116,6 @@ const Dashboard = () => {
           <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Last Synced: DATE{ /* MAKE THIS FUNCTIONAL */ }</span>
           </div>
         </div>
-        
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/*PROMPT INPUT*/}
@@ -96,6 +130,7 @@ const Dashboard = () => {
               </h3>
 
               <textarea
+                aria-label="Enter your AI prompt for carbon analysis"
                 className="w-full h-48 p-4 bg-primary-off-white/50 border border-primary-dark/5 rounded-3xl focus:ring-2 focus:ring-primary-green outline-none transition-all placeholder:text-gray-400 resize-none dark:text-primary-dark"
                 placeholder="Enter your prompt here to estimate carbon impact..."
                 value={prompt}
@@ -142,7 +177,7 @@ const Dashboard = () => {
               </div>
               <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary-white/80 rounded-3xl blur-3xl group-hover:bg-primary-white/90 transition-all"></div>
             </div>
-                        <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               <div className="bg-primary-white/30 backdrop-blur-md border border-primary-white/40 hover:border-primary-green/40 transition-colors p-5 rounded-3xl shadow-lg">
                 <div className="bg-primary-green/20 p-3 rounded-2xl w-fit mb-2">
                 <Globe aria-label="Grid Region Icon" className="text-primary-green" size={32} />
@@ -150,7 +185,7 @@ const Dashboard = () => {
                 <p className="text-sm text-gray-400 font-bold">Grid Region</p>
                 <h3 className="text-sm font-bold text-primary-dark leading-relaxed">
                   {regionName} <br />
-                  (USA)
+                  {chosenModel === "DeepSeek V3" ? `(China)` : `(USA)` }
                 </h3>
               </div>
               <div className="bg-primary-white/30 backdrop-blur-md border border-primary-white/40 hover:border-primary-green/40 transition-colors p-5 rounded-3xl shadow-lg">
@@ -188,7 +223,20 @@ const Dashboard = () => {
           </div>
             </>
           )}
-
+        <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-primary-dark/10">
+        <div className="text-center">
+          <p className="text-sm font-black uppercase tracking-widest text-gray-400 mb-1">Total Tokens IDK</p>
+          <h4 className="text-2xl font-bold text-primary-dark">{globalStats.tokens}</h4>
+        </div>
+        <div className="text-center">
+          <p className="text-sm font-black uppercase tracking-widest text-gray-400 mb-1">Total CO<sub>2</sub></p>
+          <h4 className="text-2xl font-bold text-primary-dark">{globalStats.emissions}</h4>
+        </div>
+        <div className="text-center">
+          <p className="text-sm font-black uppercase tracking-widest text-gray-400 mb-1">Figurative Miles Driven</p>
+          <h4 className="text-2xl font-bold text-primary-dark">{globalStats.miles.toFixed(6)}</h4>
+        </div>
+        </div>
       </div>
       <div className="relative w-full py-12 flex items-center justify-center">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">

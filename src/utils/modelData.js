@@ -23,6 +23,7 @@ export const MODEL_CONFIG = {
     provider: "DeepSeek",
     likelyZone: "CN-NORTH",
     energyPerToken: 0.0000005,
+    fallbackIntensity: 550,
   },
 
   "Grok 4.1": {

@@ -2,6 +2,8 @@ import React from 'react'
 import { assets } from '../assets/assets.js'
 import { Microscope, Database, Target } from 'lucide-react'
 
+//Trying a different way of making these to save time
+
     const AboutGridCard = ({ title, children, icon: Icon, className ="" }) => (
         <div className={`bg-primary-white/60 backdrop-blur-2xl border border-primary-white/40 hover:border-primary-green/40 transition-all p-8 rounded-3xl shadow-sm flex flex-col gridcard ${className}`}>
             <div className="flex items-center gap-3 mb-4">

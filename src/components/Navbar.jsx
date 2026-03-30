@@ -26,16 +26,17 @@ const navbar = () => {
           {/*IMPLEMENT THIS LATER FUTURE
         
         I GOTCHU ME 3 DAYS AGO*/}
-          <li className="border-x px-2 border-primary-dark/20">
-            <label className="inline-flex items-center relative cursor-pointer scale-75 md:scale-90">
+          <li className="border-x px-2 border-primary-dark/20 ">
+            <label className="inline-flex items-center relative cursor-pointer scale-75 md:scale-90 ">
               <input
                 type="checkbox"
                 onChange={toggleTheme}
                 checked={theme === "dark"}
-                className="hidden"
+                aria-label="Toggle Dark Mode"
+                className="sr-only peer"
               />
               <div
-                className={`relative w-16 h-8 rounded-full shadow-inner transition-colors duration-300 ${theme === "dark" ? "bg-zinc-700" : "bg-gray-200"}`}
+                className={`relative w-16 h-8 rounded-full shadow-inner transition-colors duration-300 ${theme === "dark" ? "bg-zinc-700" : "bg-gray-200"} peer-focus-visible:ring-2 peer-focus-visible:ring-primary-green peer-focus-visible:ring-offset-2`}
               >
                 <Sun
                   size={14}
