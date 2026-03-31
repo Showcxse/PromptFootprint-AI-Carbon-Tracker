@@ -1,4 +1,4 @@
-//import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Hero from './components/Hero.jsx'
 import Dashboard from './components/Dashboard.jsx'
 import Footer from './components/Footer.jsx'
@@ -7,8 +7,16 @@ import About from './components/About.jsx'
 import { ErrorBoundary } from 'react-error-boundary'
 import { assets } from './assets/assets.js'
 
-
+//TO ALL RECRUITERS WHO SEE THIS, I CAN MAKE A 'PROFESSIONAL AND SERIOUS' ERROR PAGE, I JUST DID THIS BECAUSE I THOUGHT IT WAS FUNNY
 function ErrorFallback({ error, resetErrorBoundary }) {
+
+  useEffect(() => {
+    const errorAudio = new Audio(assets.errorsound);
+    errorAudio.play().catch((err) => {
+      console.warn("Failed to play error sound:", err);
+    });
+  }, []);
+
   return (
   <div role='alert' className='flex flex-col items-center justify-center py-20 bg-red-50 dark:bg-red-950/20 rounded-3xl border border-red-200'>
     <p className='text-xl font-bold text-red-600 mb-4'>Sowwy something went wong with our services</p>
@@ -27,7 +35,7 @@ function ErrorFallback({ error, resetErrorBoundary }) {
 }
 
 function App() {
-
+  const [dashboardKey, setDashboardKey] = useState(0);
   return (
     <>
     <div className="App relative w-full overflow-hidden">
@@ -36,13 +44,10 @@ function App() {
     <ErrorBoundary
     FallbackComponent={ErrorFallback}
     onReset={() => {
-      {/*MAKE SOMETHING THAT RESETS THE SUBCOMPONENTS OF DASHBOARD THAT HAVE DATA TO
-        SOME KIND OF DEFAULT / PLACEHOLDER VALUE WHATEVER THE HELL THAT EVEN IS
-
-        */}
+      setDashboardKey((prevKey) => prevKey + 1);
     }}
     >
-    <Dashboard />
+    <Dashboard key={dashboardKey} />
     </ErrorBoundary>
     <About />
     <Footer />  

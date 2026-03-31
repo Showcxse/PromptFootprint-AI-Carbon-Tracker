@@ -45,7 +45,7 @@ const Dashboard = () => {
           }
         );
 
-        if (!response.ok) throw new Error("Sum not okay");
+        if (!response.ok) throw new Error("Sum not okay with the api");
 
         const data = await response.json();
         currentGridIntensity = data.carbonIntensity;
@@ -97,7 +97,6 @@ const Dashboard = () => {
 
   return (
     <>
-      {/*WRAP THIS FAKA IN AN ERROR BOUNDARY */}
       
       <main id="analyzer" className="dashboardWrapper relative py-20 px-6 min-h-screen bg-primary-off-white">
           {/*MORE BLOBS SIR */}
@@ -116,10 +115,8 @@ const Dashboard = () => {
           <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Last Synced: DATE{ /* MAKE THIS FUNCTIONAL */ }</span>
           </div>
         </div>
-
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/*PROMPT INPUT*/}
-
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-primary-white/60 backdrop-blur-xl border border-primary-white/40 hover:border-primary-green/40 transition-colors p-8 rounded-3xl shadow-sm">
               <h3 className="font-xl font-bold text-primary-dark mb-4 flex items-center gap-2">
@@ -223,19 +220,41 @@ const Dashboard = () => {
           </div>
             </>
           )}
-        <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-primary-dark/10">
-        <div className="text-center">
-          <p className="text-sm font-black uppercase tracking-widest text-gray-400 mb-1">Total Tokens IDK</p>
-          <h4 className="text-2xl font-bold text-primary-dark">{globalStats.tokens}</h4>
-        </div>
-        <div className="text-center">
-          <p className="text-sm font-black uppercase tracking-widest text-gray-400 mb-1">Total CO<sub>2</sub></p>
-          <h4 className="text-2xl font-bold text-primary-dark">{globalStats.emissions}</h4>
-        </div>
-        <div className="text-center">
-          <p className="text-sm font-black uppercase tracking-widest text-gray-400 mb-1">Figurative Miles Driven</p>
-          <h4 className="text-2xl font-bold text-primary-dark">{globalStats.miles.toFixed(6)}</h4>
-        </div>
+        <div className="md:col-span-3 mt-4 relative group">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative bg-primary-white/60 dark:bg-zinc-900/60 backdrop-blur-xl border border-primary-dark/10 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-lg hover:border-primary-green transition-colors duration-200">
+          <div className="absolute -inset-1 bg-linear-to-r from-primary-green/15 to-emerald-600/15 rounded-3xl blur-md opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+          <div className="flex flex-col items-center md:items-start gap-2 min-w-50">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-green opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary-green"></span>
+              </span>
+              <h3 className="text-sm font-bold uppercase tracking-widest text-primary-dark dark:text-gray-300">Global Impact</h3>
+            </div>
+            <p className="text-xs text-gray-500 dark:text-gray-400 text-center md:text-left tracking-wider">Live community tracking</p>
+          </div>
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full divide-y sm:divide-y-0 sm:divide-x divide-primary-dark/10 dark:divide-white/10">
+                    <div className="flex flex-col items-center justify-center py-4 sm:py-0">
+            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-1">Total Tokens Analyzed</p>
+            <h4 className="text-2xl font-bold text-primary-dark dark:text-white">
+              {globalStats.tokens.toLocaleString()}
+            </h4>
+          </div>
+          <div className="flex flex-col items-center justify-center py-4 sm:py-0">
+            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-1">Total CO<sub>2</sub> Tracked</p>
+            <h4 className="text-2xl font-bold text-primary-dark dark:text-white">
+              {globalStats.emissions.toFixed(2)} g
+            </h4>
+          </div>
+
+          <div className="flex flex-col items-center justify-center pt-4 sm:pt-0">
+            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-1">Est. Miles Driven</p>
+            <h4 className="text-2xl font-bold text-primary-dark dark:text-white">
+              {globalStats.miles.toFixed(2)} mi
+            </h4>
+          </div>
+          </div>
+          </div>
         </div>
       </div>
       <div className="relative w-full py-12 flex items-center justify-center">
