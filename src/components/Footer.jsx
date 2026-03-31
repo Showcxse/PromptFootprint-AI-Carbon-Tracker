@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react';
+import LegalModal from './LegalModal';
+import PrivacyPolicy from './PrivacyPolicy';
+import Terms from './Terms';
 
-const footer = () => {
+
+const Footer = () => {
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+
   return (
     <>
     <footer className='footerWrapper relative bg-linear-to-t from-primary-white to-primary-off-white backdrop-blur-md border-t border-primary-dark text-md text-gray-700 dark:text-slate-200 text-center overflow-hidden'>
@@ -8,7 +15,7 @@ const footer = () => {
       <div className="absolute bottom-[20%] left-[-5%] w-100 h-100 bg-emerald-400/10 dark:opacity-50 rounded-full blur-[100px] pointer-events-none"></div>
       <div className="max-w-6xl mx-auto flex justify-between items-center sm:flex-row gap-4 flex-wrap p-6">
         
-        <div className='items-center gap-2 px-3 py-1 text-left flex-1'>
+        <div className='items-center gap-2 sm:px-3 py-1 text-left flex-1'>
           <div>
             <h3 className='text-2xl mb-2 leading-tight tracking-tigher'>Prompt<span className='text-transparent bg-clip-text bg-linear-to-r from-primary-green to bg-emerald-700'>Footprint</span> </h3>
             <p>See the carbon cost before you send</p>
@@ -40,14 +47,14 @@ const footer = () => {
             <a href="https://www.linkedin.com/in/casey-abbott-0148553a2" target='_blank' rel="noopener noreferrer">
               <svg 
               xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" 
+              xmlnsXlink="http://www.w3.org/1999/xlink" 
               version="1.1"  
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className='w-6 h-6 hover:text-primary-green transition-colors duration-300'>
                 <path d="M21,21H17V14.25C17,13.19 15.81,12.31 14.75,12.31C13.69,12.31 13,13.19 13,14.25V21H9V9H13V11C13.66,9.93 15.36,9.24 16.5,9.24C19,9.24 21,11.28 21,13.75V21M7,21H3V9H7V21M5,3A2,2 0 0,1 7,5A2,2 0 0,1 5,7A2,2 0 0,1 3,5A2,2 0 0,1 5,3Z" />
               </svg>
@@ -80,14 +87,40 @@ const footer = () => {
       </p>
       <div>
         <ul className='flex gap-4'>
-          <li>Terms & Conditions</li>
-          <li>Privacy Policy</li>
+          <li>
+            <button
+            onClick={() => setIsTermsOpen(true)}
+            className="cursor-pointer hover:text-primary-green transition-colors focus:outline-none">
+            Terms & Conditions
+            </button>
+            </li>
+          <li>
+          <button
+            onClick={() => setIsPrivacyOpen(true)}
+            className="cursor-pointer hover:text-primary-green transition-colors focus:outline-none">
+            Privacy Policy
+            </button>
+          </li>
         </ul>
       </div>
     </div>
     </footer>
+    <LegalModal
+      isOpen={isTermsOpen}
+      closeModal={() => setIsTermsOpen(false)}
+      title="Terms & Conditions"
+    >
+      <Terms />
+    </LegalModal>
+    <LegalModal
+      isOpen={isPrivacyOpen}
+      closeModal={() => setIsPrivacyOpen(false)}
+      title="Privacy Policy"
+    >
+      <PrivacyPolicy />
+    </LegalModal>
     </>
   )
 }
 
-export default footer
+export default Footer

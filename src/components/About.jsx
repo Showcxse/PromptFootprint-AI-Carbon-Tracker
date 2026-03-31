@@ -21,18 +21,15 @@ const About = () => {
   return (
     <>
     <section id='about' className='aboutWrapper relative bg-primary-off-white pb-20 px-6'>
-        {/* GREEN BLOBS IN THE BACKGROUND */}
         <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-primary-green/20 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-[20%] left-[-5%] w-100 h-100 bg-emerald-400/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="absolute top-[30%] right-[10%] w-80 h-80 bg-primary-green/15 rounded-full blur-[90px] pointer-events-none"></div> 
         {/* ACTUAL CONTENT */}
         <div className="max-w-6xl mx-auto">
-            {/* HEADER */}
             <div className="mb-12">
-                <h2 className="text-4xl font-bold text-primary-dark mb-2">About <span className='text-primary-green'>PromptFootprint</span></h2>
+                <h2 className="text-3xl sm:text-4xl font-bold text-primary-dark mb-2">About <span className='text-primary-green'>PromptFootprint</span></h2>
                 <div className="w-16 h-1 bg-primary-green rounded-full"></div>
             </div>
-            {/* GRID */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <AboutGridCard title="Data Methodology" icon={Microscope} className="md:col-span-2">
                     <p className="mb-4">This tool uses the formula <strong>{"formula"}</strong>  to provide a real-time estimate of carbon emissions based on regional grid data.</p>
@@ -52,7 +49,7 @@ const About = () => {
                         <div className="w-16 h-1 bg-primary-white dark:bg-primary-dark rounded-full mb-2"></div>
                         <p className="text-sm text-primary-off-white dark:text-slate-200">This tool aims to provide transparency and awareness about the environmental impact of AI operations, helping users make informed decisions about their AI usage.</p>
                     </div>
-                    <img className='w-40 opacity-80' src={assets.ailazyart} alt="AI Illustration" />
+                    <img className='w-25 sm:w-40 opacity-80' src={assets.ailazyart} alt="AI Illustration" />
                 <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary-white/80 rounded-3xl blur-3xl group-hover:bg-primary-white/90 transition-all"></div>
                 </div>
             </div>

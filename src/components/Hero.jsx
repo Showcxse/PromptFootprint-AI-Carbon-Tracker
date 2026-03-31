@@ -34,16 +34,16 @@ const Hero = () => {
         {/*TOP SECTION*/}
         <div className="max-w-4xl mx-auto flex flex-col items-center justify-center py-20 px-4">
           {/* BADGE BECAUSE EVERYONE HAS ONE FOR SOME FUCKING REASON */}
-          <div className="mb-4 px-4 py-1.5 rounded-full border border-primary-green/30 bg-primary-green/10 text-sm font-medium tracking-wide text-primary-dark">
+          <div className="text-nowrap mb-4 px-4 py-1.5 rounded-full border border-primary-green/30 bg-primary-green/10 text-[10px] sm:text-sm font-medium tracking-wide text-primary-dark">
             🌱 GREEN AI IN 2026: Real-Time Emissions Tracking
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold text-primary-dark text-center leading-tight tracking-tighter">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-primary-dark text-center leading-tight tracking-tighter">
             Prompt
             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary-green to-emerald-700">
               Footprint
             </span>{" "}
           </h1>
-          <div className="mt-8 max-w-lg text-lg md:text-2xl text-gray-500 dark:text-slate-300 text-center font-medium leading-relaxed">
+          <div className="mt-8 max-w-lg text-base sm:text-lg md:text-2xl text-gray-500 dark:text-slate-300 text-center font-medium leading-relaxed">
             <p>
               Calculate the enviormental impact output your AI prompts in
               real-time!

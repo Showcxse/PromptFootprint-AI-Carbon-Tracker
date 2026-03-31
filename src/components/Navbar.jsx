@@ -2,7 +2,7 @@ import React from "react";
 import { Sun, Moon, SunIcon } from "lucide-react";
 import { useDarkMode } from "../hooks/useDarkMode";
 
-const navbar = () => {
+const Navbar = () => {
   const [theme, toggleTheme] = useDarkMode();
 
   return (
@@ -10,14 +10,14 @@ const navbar = () => {
       <nav id="home" className="relative flex p-4 items-center justify-center font-medium text-gray-700 dark:text-slate-200 bg-linear-to-t from-primary-white to-primary-off-white overflow-hidden">
         <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-primary-green/20 dark:opacity-50 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-[20%] left-[-5%] w-100 h-100 bg-emerald-400/10 dark:opacity-50 rounded-full blur-[100px] pointer-events-none"></div>
-        <ul className="flex gap-8 text-sm items-center">
-          <li className="hover:text-primary-green transition-colors duration-300 cursor-pointer">
+        <ul className="flex gap-2 sm:gap-8 text-sm items-center">
+          <li className="text-xs sm:text-sm hover:text-primary-green transition-colors duration-300 cursor-pointer">
             <a href="#about">
             ABOUT
 
             </a>
           </li>
-          <li className="hover:text-primary-green transition-colors duration-300 cursor-pointer">
+          <li className="text-xs sm:text-sm text-nowrap hover:text-primary-green transition-colors duration-300 cursor-pointer">
             <a href="#analyzer">
             PROMPT ANALYZER
 
@@ -26,7 +26,7 @@ const navbar = () => {
           {/*IMPLEMENT THIS LATER FUTURE
         
         I GOTCHU ME 3 DAYS AGO*/}
-          <li className="border-x px-2 border-primary-dark/20 ">
+          <li className="border-x sm:px-2 border-primary-dark/20 ">
             <label className="inline-flex items-center relative cursor-pointer scale-75 md:scale-90 ">
               <input
                 type="checkbox"
@@ -94,14 +94,14 @@ const navbar = () => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
                 version="1.1"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="w-6 h-6 hover:text-primary-green transition-colors duration-300"
               >
                 <path d="M21,21H17V14.25C17,13.19 15.81,12.31 14.75,12.31C13.69,12.31 13,13.19 13,14.25V21H9V9H13V11C13.66,9.93 15.36,9.24 16.5,9.24C19,9.24 21,11.28 21,13.75V21M7,21H3V9H7V21M5,3A2,2 0 0,1 7,5A2,2 0 0,1 5,7A2,2 0 0,1 3,5A2,2 0 0,1 5,3Z" />
@@ -114,4 +114,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default Navbar;
