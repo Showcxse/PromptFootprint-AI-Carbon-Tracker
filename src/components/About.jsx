@@ -32,7 +32,7 @@ const About = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <AboutGridCard title="Data Methodology" icon={Microscope} className="md:col-span-2">
-                    <p className="mb-4">This tool uses the formula <strong>{"formula"}</strong>  to provide a real-time estimate of carbon emissions based on regional grid data.</p>
+                    <p className="mb-4">This tool uses the following formula to provide a real-time estimate of carbon emissions based on regional grid data:</p>
                     <div className="bg-primary-green/15 rounded-xl p-4 border border-primary-green/30 font-mono text-xs italic">
                     Est. Emissions = Prompt length ⮕ Token Count ⮕ Regional Intensity
                     </div>

@@ -112,7 +112,7 @@ const Dashboard = () => {
           </div>
           <div className="flex items-center gap-2 px-3 py-1 bg-primary-white/50 backdrop-blur-sm border border-black/5 rounded-full shadow-sm">
           <div className="w-2 h-2 bg-primary-green rounded-full animate-pulse"></div>
-          <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Last Synced: DATE{ /* MAKE THIS FUNCTIONAL */ }</span>
+          <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Last Synced: {new Date().toLocaleString()}</span>
           </div>
         </div>
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

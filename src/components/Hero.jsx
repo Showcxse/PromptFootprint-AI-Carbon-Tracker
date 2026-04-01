@@ -37,7 +37,7 @@ const Hero = () => {
           <div className="text-nowrap mb-4 px-4 py-1.5 rounded-full border border-primary-green/30 bg-primary-green/10 text-[10px] sm:text-sm font-medium tracking-wide text-primary-dark">
             🌱 GREEN AI IN 2026: Real-Time Emissions Tracking
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-primary-dark text-center leading-tight tracking-tighter">
+          <h1 className="text-[38px] sm:text-6xl md:text-8xl font-bold text-primary-dark text-center leading-tight tracking-tighter">
             Prompt
             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary-green to-emerald-700">
               Footprint
