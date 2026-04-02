@@ -15,7 +15,7 @@ import { Microscope, Database, Target } from 'lucide-react'
             <div className="text-sm text-gray-600 dark:text-slate-100 leading-relaxed">{children}</div>
         </div>
     );
-
+//COMMENT SO I CAN MAKE ANOTHER COMMIT TO TROUBLESHOOT VERCEL DEPLOYMENT ISSUES, IGNORE THIS
 const About = () => {
 
   return (
