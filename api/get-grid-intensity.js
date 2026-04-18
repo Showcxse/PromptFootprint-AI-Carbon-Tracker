@@ -1,4 +1,4 @@
-export default async function hander(req, res) {
+export default async function handler(req, res) {
 
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -17,7 +17,7 @@ export default async function hander(req, res) {
 
     try {
         const response = await fetch(
-            `https://api.electricitymap.org/v3/carbon-intensity/latest?zone=${zone}}`,
+            `https://api.electricitymap.org/v3/carbon-intensity/latest?zone=${zone}`,
             {
                 headers: {
                     'auth-token': process.env.ELECTRICITY_MAPS_API_KEY,
