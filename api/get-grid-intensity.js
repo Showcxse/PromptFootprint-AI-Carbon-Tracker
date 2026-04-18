@@ -17,7 +17,7 @@ export default async function hander(req, res) {
 
     try {
         const response = await fetch(
-            `https://promptfootprint.vercel.app/api/get-grid-intensity?zone=${activeModel.likelyZone}`,
+            `https://api.electricitymap.org/v3/carbon-intensity/latest?zone=${zone}}`,
             {
                 headers: {
                     'auth-token': process.env.ELECTRICITY_MAPS_API_KEY,
@@ -27,7 +27,7 @@ export default async function hander(req, res) {
 
         if (!response.ok) throw new Error(`Upstream API Error: ${response.statusText}`);
 
-        const data = await response.json;
+        const data = await response.json();
 
         return res.status(200).json(data);
     } catch (error) {
