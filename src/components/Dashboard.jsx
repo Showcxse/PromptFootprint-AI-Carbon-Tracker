@@ -52,15 +52,10 @@ const Dashboard = () => {
         currentGridIntensity = activeModel.fallbackIntensity;
       } else {
         const response = await fetch(
-          `https://api.electricitymap.org/v3/carbon-intensity/latest?zone=${activeModel.likelyZone}`,
-          {
-            headers: {
-              "auth-token": import.meta.env.VITE_ELECTRICITY_MAPS_API_KEY,
-            },
-          }
+          `/api/get-grid-intensity?zone=${activeModel.likelyZone}`
         );
 
-        if (!response.ok) throw new Error("Sum not okay with the api");
+        if (!response.ok) throw new Error("Error establishing link to Electricity Maps API");
 
         const data = await response.json();
         currentGridIntensity = data.carbonIntensity;
