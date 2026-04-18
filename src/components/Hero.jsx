@@ -45,7 +45,7 @@ const Hero = () => {
           </h1>
           <div className="mt-8 max-w-lg text-base sm:text-lg md:text-2xl text-gray-500 dark:text-slate-300 text-center font-medium leading-relaxed">
             <p>
-              Calculate the enviormental impact output your AI prompts in
+              Calculate the enviormental impact of your AI prompts in
               real-time!
             </p>
           </div>
