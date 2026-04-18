@@ -172,7 +172,7 @@ const Dashboard = () => {
                       className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
                         expectedOutput === preset.tokens
                           ? "bg-primary-green text-white shadow-md border border-primary-green scale-105"
-                          : "bg-primary-white/50 text-gray-500 border border-primary-dark/10 hover:border-primary-green/50 hover:bg-white"
+                          : "bg-primary-white/50 text-gray-500 border border-primary-dark/10 hover:border-primary-green/50 hover:bg-primary-white dark:hover:bg-primary-off-white cursor-pointer"
                       }`}
                     >
                       {preset.label}
@@ -202,7 +202,7 @@ const Dashboard = () => {
             ) : !hasAnalyzed ? (
               // Blank Slate State
               <div className="bg-primary-white/30 backdrop-blur-md border-2 border-primary-dark/5 border-dashed rounded-3xl flex-1 flex flex-col items-center justify-center text-center p-8 transition-all hover:border-primary-green/30">
-                <div className="bg-primary-white/50 p-4 rounded-full mb-4 shadow-sm">
+                <div className="bg-primary-white/50 dark:bg-primary-white/80 p-4 rounded-full mb-4 shadow-sm">
                     <Leaf className="text-primary-green" size={40} />
                 </div>
                 <h3 className="text-lg font-bold text-primary-dark mb-2">Awaiting Prompt</h3>
